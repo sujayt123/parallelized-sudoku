@@ -1,0 +1,4 @@
+Brief analysis:
+A parallelized implementation of Sudoku solvers can be very powerful, but only for "difficult" puzzles. Since the solver uses recursive backtracking, we can naturally consider difficulty as being proportional to the number of initially empty cells in the grid. If the search space is relatively small (i.e. we have an easy puzzle), then the overhead of thread initialization and coordination overpowers the benefits of parallelism. For the hardest puzzles, I was able to see a 3x reduction in overall running time on Rice's NOTS supercomputing cluster (see SudokuSolverPerformanceTest.java).
+
+I also attempted to solve/generate larger puzzles (16 x 16) somewhat naively before realizing the search space (with this depth-first solving approach) was pretty much intractable. Maybe it isn't. Future work remains to be done.
